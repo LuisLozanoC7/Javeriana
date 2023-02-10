@@ -1,11 +1,11 @@
 ---
-title": "Análisis de la carrera"
+title: "Análisis de la carrera - Luis Carlos Lozano"
 output:
   flexdashboard::flex_dashboard:
     theme:
       bg: "#FFFFFF"
       fg: "#101010" 
-      primary: "#ED79F9"
+      primary: "#FFF8DC"
       base_font:
         google: Prompt
       code_font:
