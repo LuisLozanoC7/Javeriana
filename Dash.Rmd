@@ -33,7 +33,7 @@ Column {data-width=200}
 ```{r}
 ggplot(data = CarreraLuz22, aes(x = categoria)) + 
   geom_bar(colour="#BA8111", fill="#FF6347") + 
-  xlab("Categoría") + ylab("Cantidad")+ 
+  xlab("Categoria") + ylab("Cantidad")+ 
   theme(panel.background = element_rect(fill = "#FFF8DC"))
 
 ```
@@ -74,7 +74,7 @@ ggplot(porcentaje, aes(x=1, y=percentage, fill=sex)) +
   theme(plot.title = element_text(hjust=0.5))
 ```
 
-Column {data-width=200}
+
 
 ### Distribución tiempo en minutos de los hombres
 
