@@ -1,5 +1,5 @@
 ---
-title: "Análisis de la carrera - Luis Carlos Lozano Caballero"
+title: "Análisis de la carrera - Luis Carlos Lozano Caballero."
 output:
   flexdashboard::flex_dashboard:
     theme:
