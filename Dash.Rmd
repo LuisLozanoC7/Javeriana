@@ -95,8 +95,8 @@ Column {data-width=200}
 ### Relación categoría - tiempo de carrera
 
 ```{r}
-ggplot(data = CarreraLuz22, aes(x = categoria, y = timerun, color = "#FF6347")) +
-  geom_point() +
+ggplot(data = CarreraLuz22, aes(x = categoria, y = timerun )) +
+  geom_point(color = "#FF6347") +
   labs(x="categoria", y="timerun")+
   theme(panel.background = element_rect(fill = "#FFF8DC"))
 ```
