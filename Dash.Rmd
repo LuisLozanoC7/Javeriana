@@ -1,5 +1,5 @@
 ---
-title: "Análisis de la carrera - Luis Carlos Lozano Caballero."
+title: "Análisis de la carrera - Luis Carlos Lozano"
 output:
   flexdashboard::flex_dashboard:
     theme:
@@ -40,7 +40,7 @@ ggplot(data = CarreraLuz22, aes(x = categoria)) +
 Column {data-width=200}
 
 
-### Distribución tiempo en minutos de las mujeres
+### Distribución tiempo en minutos - Mujeres
 
 ```{r}
 ggplot(CarreraLuz22[CarreraLuz22$sex == "Mujer",], aes(x=timerun/60)) +
@@ -76,7 +76,7 @@ ggplot(porcentaje, aes(x=1, y=percentage, fill=sex)) +
 
 
 
-### Distribución tiempo en minutos de los hombres
+### Distribución tiempo en minutos - Hombres
 
 ```{r}
 ggplot(CarreraLuz22[CarreraLuz22$sex == "Hombre",], aes(x=timerun/60)) +
