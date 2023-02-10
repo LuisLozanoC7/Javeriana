@@ -1,10 +1,10 @@
 ---
-title:
+title": "Análisis de la carrera"
 output:
   flexdashboard::flex_dashboard:
     theme:
-      bg: "#101010"
-      fg: "#FDF7F7" 
+      bg: "#FFFFFF"
+      fg: "#101010" 
       primary: "#ED79F9"
       base_font:
         google: Prompt
@@ -25,22 +25,35 @@ library(dplyr)
 # thematic::thematic_rmd()
 ```
 
-Column {data-width=350 .tabset}
+Column {data-width=200}
 -----------------------------------------------------------------------
-### Chart A
+
+### Participantes de acuerdo a su categoría
 
 ```{r}
-
 ggplot(data = CarreraLuz22, aes(x = categoria)) + 
-  geom_bar(colour="#BA8111", fill="#EEC591") + 
+  geom_bar(colour="#BA8111", fill="#FF6347") + 
   xlab("Categoría") + ylab("Cantidad")+ 
-  ggtitle("Cantidad de participantes por categoría")+ 
-  theme(plot.title = element_text(hjust=0.5)) +
   theme(panel.background = element_rect(fill = "#FFF8DC"))
 
 ```
+Column {data-width=200}
 
-### Chart B
+
+### Distribución tiempo en minutos de las mujeres
+
+```{r}
+ggplot(CarreraLuz22[CarreraLuz22$sex == "Mujer",], aes(x=timerun/60)) +
+  geom_histogram(binwidth=5, color="black", fill="#FFC0CB") +
+  labs(x="Tiempo de carrera", y="Frecuencia", color="Hombres") +
+  theme_classic()+
+  theme(panel.background = element_rect(fill = "#FFF8DC"))
+```
+
+Column {data-width=200}
+-----------------------------------------------------------------------
+
+### Porcentaje de participantes de acuerdo al género
 
 ```{r}
 #Convertimos a porcentaje
@@ -58,66 +71,72 @@ ggplot(porcentaje, aes(x=1, y=percentage, fill=sex)) +
         theme_void()+
   scale_fill_manual(values=c("#AFEEEE", "#FFC0CB"))+
   theme(panel.background = element_rect(fill = "#FFF8DC"))+
-  ggtitle("Porcentaje de participantes por sexo")+
   theme(plot.title = element_text(hjust=0.5))
-
-  
-    
 ```
 
-Column {data-width=350}
+Column {data-width=200}
+
+### Distribución tiempo en minutos de los hombres
+
+```{r}
+ggplot(CarreraLuz22[CarreraLuz22$sex == "Hombre",], aes(x=timerun/60)) +
+  geom_histogram(binwidth=5, color="black", fill="#AFEEEE") +
+  labs(x="Tiempo de carrera", y="Frecuencia", color="Hombres") +
+  theme_classic()+
+  theme(panel.background = element_rect(fill = "#FFF8DC"))
+```
+
+
+
+
+Column {data-width=200}
 -----------------------------------------------------------------------
 
-### Chart C
+### Relación categoría - tiempo de carrera
 
 ```{r}
 ggplot(data = CarreraLuz22, aes(x = categoria, y = timerun, color = "#FF6347")) +
   geom_point() +
   labs(x="categoria", y="timerun")+
-  ggtitle("Relación Categoría - Tiempo de carrera")+
-  theme(plot.title = element_text(hjust=0.5))+
   theme(panel.background = element_rect(fill = "#FFF8DC"))
 ```
 
-### Chart D
+### Tiempo de carrera de acuerdo al género
 
 ```{r}
-ggplot(data= CarreraLuz22, aes(x=sex, y=timerun, color="#FF6347"))+
-  geom_jitter(size=1, alpha=0.7)+
+ggplot(data= CarreraLuz22, aes(x=sex, y=timerun))+
+  geom_jitter(size=1, alpha=0.7, color="#FF6347")+
   geom_boxplot(alpha=0.7)+
-  ggtitle("Distribución de tiempo de carrera de acuerdo al sexo")+
-  theme(plot.title = element_text(hjust=0.5))+
   xlab("Genero")+
   ylab("Tiempo de carrera")+
   theme(panel.background = element_rect(fill = "#FFF8DC"))
-
-
-
 ```
 
 Column {data-width=150}
 -----------------------------------------------------------------------
-
-### Dato 1
-
+### Ciudad con mayor cantidad de participantes
 ```{r}
+frecuencia <- table(CarreraLuz22$origen)
+valor_mas_frecuente <- names(which.max(frecuencia))
+cat(valor_mas_frecuente)
+
 
 ```
 
-### Dato 2
-
+### Participante con mayor edad
 ```{r}
-
+cat(max(CarreraLuz22$edad))
+```
+### Promedio de tiempo en minutos de todos los participantes
+```{r}
+cat(mean(CarreraLuz22$timerun)/60)
+```
+### Cantidad de participantes de la carrera
+```{r}
+cat(nrow(CarreraLuz22))
 ```
 
-### Dato 3
-
+### Menor cantidad de tiempo en minutos
 ```{r}
-
-```
-
-### Dato 4
-
-```{r}
-
+cat(min(CarreraLuz22$timerun/60))
 ```
